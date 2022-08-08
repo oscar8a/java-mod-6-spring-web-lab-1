@@ -1,6 +1,6 @@
-package repository;
+package com.accesscamp.api.repository;
 
-import model.Activity;
+import com.accesscamp.api.model.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActivityRepository extends JpaRepository<Activity, Long> {
