@@ -1,5 +1,7 @@
 package com.accesscamp.api.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "SIGN_UPS")
+@Data
 public class SignUp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

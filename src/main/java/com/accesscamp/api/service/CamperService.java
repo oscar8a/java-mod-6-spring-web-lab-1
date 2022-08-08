@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class CamperService {
-
     @Autowired
     private CamperRepository camperRepository;
 
@@ -22,7 +21,6 @@ public class CamperService {
     private ModelMapper mapper;
 
     public CamperDTO saveCamperDTO(CamperDTO camperDTO){
-
         // Convert camperDTO to a Camper Entity
         Camper camper = mapper.map(camperDTO, Camper.class);
 
