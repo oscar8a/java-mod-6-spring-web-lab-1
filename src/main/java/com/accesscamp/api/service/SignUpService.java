@@ -30,12 +30,12 @@ public class SignUpService {
     public SignUpDTO saveSignUpDTO(SignUpDTO signUpDTO){
         SignUp signUp = mapper.map(signUpDTO, SignUp.class);
 
-        Camper camper = signUp.getCamper();
-        Activity activity = signUp.getActivity();
+        long camperID = signUpDTO.getCamperID();
+        long activityID = signUpDTO.getActivityID();
 
-        signUp.setCamper(camperRepo.findById(camper.getId())
+        signUp.setCamper(camperRepo.findById(camperID)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "validation error")));
-        signUp.setActivity(activityRepo.findById(activity.getId())
+        signUp.setActivity(activityRepo.findById(activityID)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "validation error")));
 
         signUpRepository.save(signUp);

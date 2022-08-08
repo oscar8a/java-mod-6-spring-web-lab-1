@@ -31,7 +31,7 @@ public class CamperService {
 
     public CamperDTO getCamperDTO(Long id){
         Camper camper =
-                camperRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                camperRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Camper not Found"));
         return mapper.map(camper, CamperDTO.class);
     }
 
