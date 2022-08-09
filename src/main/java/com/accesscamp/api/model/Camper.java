@@ -20,11 +20,11 @@ public class Camper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Name may not be empty")
     private String name;
 
-    @Min(8)
-    @Max(18)
+    @Min(value = 8, message = "Minimum age is 8")
+    @Max(value = 18, message = "Maximum age is 18")
     private int age;
 
     private LocalDateTime created_at;

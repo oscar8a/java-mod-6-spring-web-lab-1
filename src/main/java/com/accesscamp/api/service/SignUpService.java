@@ -1,5 +1,6 @@
 package com.accesscamp.api.service;
 
+import com.accesscamp.api.dto.CamperDTO;
 import com.accesscamp.api.dto.SignUpDTO;
 import com.accesscamp.api.model.Activity;
 import com.accesscamp.api.model.Camper;
@@ -30,16 +31,23 @@ public class SignUpService {
     public SignUpDTO saveSignUpDTO(SignUpDTO signUpDTO){
         SignUp signUp = mapper.map(signUpDTO, SignUp.class);
 
-        long camperID = signUpDTO.getCamperID();
-        long activityID = signUpDTO.getActivityID();
+        Camper camper = camperRepo.findById(signUpDTO.getCamper_id())
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "validation error"));
 
-        signUp.setCamper(camperRepo.findById(camperID)
-                .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "validation error")));
-        signUp.setActivity(activityRepo.findById(activityID)
-                .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "validation error")));
+        Activity activity = activityRepo.findById(signUpDTO.getActivity_id())
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "validation error"));
+
+        signUp.setCamper(camper);
+        signUp.setActivity(activity);
 
         signUpRepository.save(signUp);
 
         return mapper.map(signUp, SignUpDTO.class);
+    }
+
+    public SignUpDTO getSignupDTO(Long id){
+        SignUp signUp =
+                    signUpRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "SignUp not Found"));
+            return mapper.map(signUp, SignUpDTO.class);
     }
 }

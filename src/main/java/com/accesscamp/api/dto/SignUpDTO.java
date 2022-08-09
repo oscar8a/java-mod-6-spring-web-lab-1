@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class SignUpDTO {
     private int time;
-    private long activityID;
-    private long camperID;
+    private long activity_id;
+    private long camper_id;
 }

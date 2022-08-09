@@ -6,8 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CamperRepository extends JpaRepository<Camper, Long> {
-    Camper findByName(String name);
-
-    void deleteByName(String name);
-    void deleteById(int id);
 }

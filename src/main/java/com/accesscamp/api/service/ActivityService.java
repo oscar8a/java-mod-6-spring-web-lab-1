@@ -38,7 +38,7 @@ public class ActivityService {
         return mapper.map(activity, ActivityDTO.class);
     }
 
-    public List<ActivityDTO> getActivitesDTO() {
+    public List<ActivityDTO> getActivitiesDTO() {
         return activityRepository.findAll()
                 .stream()
                 .map(activity -> mapper.map(activity, ActivityDTO.class))

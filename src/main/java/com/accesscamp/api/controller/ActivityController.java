@@ -28,7 +28,7 @@ public class ActivityController {
 
     @GetMapping
     public List<ActivityDTO> getActivities() {
-        return activityService.getActivitesDTO();
+        return activityService.getActivitiesDTO();
     }
 
     @DeleteMapping("/{id}")
